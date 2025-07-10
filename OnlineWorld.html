@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 1: Online World</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* Modern gradient background */
+      min-height: 100vh;
+      background: linear-gradient(135deg, #b3cfff 0%, #5b9fff 60%, #1e3c72 100%);
+    }
+    .header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+    .logo {
+      flex: 0 0 auto;
+      padding: 10px 20px;
+      background-color: #ffffff;
+    }
+    .main-title {
+      flex: 1 1 auto;
+      text-align: center;
+      font-size: 28px;
+      margin-top: 10px;
+    }
+    .nav-menu {
+      flex: 0 0 auto;
+      padding: 10px 20px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 120px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      left: 0;
+    }
+    .dropdown-content a {
+      color: #000;
+      padding: 8px 12px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+    .dropdown-content a:hover {
+      background-color: #eee;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown > a {
+      cursor: pointer;
+    }
+    .unit-box {
+      margin-top: 40px;
+      padding: 30px;
+      background-color: #eee;
+      border: 1px solid #000;
+      width: 800px;
+      text-align: center;
+    }
+    .unit-content {
+      text-align: left;
+      margin: 0 auto;
+      max-width: 700px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <img src="Assets/Logo.png" alt="Logo" width="100" height="100">
+    </div>
+    <div class="main-title">Unit 1: Online World</div>
+    <div class="nav-menu">
+      <a href="index.html">Home</a>
+      <span>|</span>
+      <div class="dropdown">
+        <a href="Introduction.html">Introduction ▼</a>
+        <div class="dropdown-content">
+          <a href="about.html">About Me</a>
+          <a href="goals.html">Goals</a>
+          <a href="skills.html">Skills</a>
+        </div>
+      </div>
+      <span>|</span>
+      <div class="dropdown">
+        <a href="Units.html">Units ▼</a>
+        <div class="dropdown-content">
+          <a href="OnlineWorld.html">Unit 1: Online World</a>
+          <a href="TechnologySystems.html">Unit 2: Technology Systems</a>
+          <a href="Spreadsheets.html">Unit 9: Spreadsheets</a>
+          <a href="SoftwareDevelopment.html">Unit 12: Software Development</a>
+          <a href="Database.html">Unit 10: Database</a>
+          <a href="DigitalPortfolio.html">Unit 3: Digital Portfolio</a>
+        </div>
+      </div>
+      <span>|</span>
+      <a href="Gallery.html">Gallery</a>
+      <span>|</span>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+
+  <div class="unit-box">
+    <h2>Unit 1: Online World</h2>
+    <div class="unit-content">
+      <p>
+        This unit explores the features, benefits, and risks of the online world. You will learn about how the internet works, online communication, digital citizenship, and how to stay safe online.
+      </p>
+      <ul>
+        <li>Understanding the structure of the internet and the World Wide Web</li>
+        <li>Types of online services (email, social media, cloud storage, etc.)</li>
+        <li>Online safety and security</li>
+        <li>Digital footprints and privacy</li>
+        <li>Responsible use of online resources</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

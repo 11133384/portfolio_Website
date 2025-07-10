@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact</title>
+  <style>
+    /* --- General Page Styles --- */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding-top: 140px;
+      background: #f4f6fa;
+      min-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* --- Header and Navigation Styles --- */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 120px;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      z-index: 1000;
+      min-width: 1200px;
+      padding: 0 30px;
+    }
+
+    .logo img {
+      width: 90px;
+      height: 90px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      background: #f9f9f9;
+    }
+
+    .main-title {
+      flex: 1 1 auto;
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      color: #222;
+      letter-spacing: 1px;
+      margin: 0 40px;
+    }
+
+    .nav-menu {
+      min-width: 600px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: flex-end;
+      background: none;
+      box-sizing: border-box;
+    }
+
+    .nav-menu a, .nav-menu button {
+      font-size: 17px;
+      color: #333;
+      text-decoration: none;
+      background: none;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+    .nav-menu a:hover, .nav-menu button:hover {
+      background: #e3e8f0;
+      color: #0078d4;
+    }
+    .nav-menu span {
+      color: #bbb;
+      font-size: 20px;
+      user-select: none;
+    }
+
+    /* --- Dropdown Styles --- */
+    .dropdown {
+      display: inline-block;
+      position: relative;
+    }
+    .dropdown > a {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 220px;
+      box-shadow: 0px 8px 24px 0px rgba(0,0,0,0.13);
+      z-index: 10;
+      left: 0;
+      top: 110%;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e3e8f0;
+    }
+    .dropdown-content a {
+      color: #222;
+      padding: 12px 20px;
+      text-decoration: none;
+      display: block;
+      font-size: 16px;
+      transition: background 0.2s;
+    }
+    .dropdown-content a:hover {
+      background-color: #f4f6fa;
+      color: #0078d4;
+    }
+    /* Make dropdown buttons look like links */
+    .dropdown-content button {
+      background: none;
+      border: none;
+      color: #222;
+      width: 100%;
+      text-align: left;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .dropdown-content button:hover {
+      background-color: #f4f6fa;
+      color: #0078d4;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Align Settings dropdown to the right edge */
+    .nav-menu > .dropdown:last-child .dropdown-content {
+      left: auto;
+      right: 0;
+    }
+
+    /* --- Contact Section Styles --- */
+    .contact-section {
+      margin-top: 30px;
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    .contact-section h2 {
+      font-size: 2.2rem;
+      color: #222;
+      margin-bottom: 0;
+      letter-spacing: 1px;
+    }
+    .contact-section p {
+      color: #444;
+      font-size: 1.1rem;
+      margin: 0 0 10px 0;
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .contact-box {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border: 1px solid #e3e8f0;
+      padding: 40px 50px 32px 50px;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 18px;
+      width: 100%;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cfd8dc;
+      border-radius: 7px;
+      font-size: 1rem;
+      background: #f7fafc;
+      transition: border 0.2s;
+      resize: none;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border: 1.5px solid #0078d4;
+      outline: none;
+      background: #fff;
+    }
+    .contact-form button {
+      padding: 12px 0;
+      font-size: 1.1rem;
+      background-color: #0078d4;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: background 0.2s;
+    }
+    .contact-form button:hover {
+      background-color: #005fa3;
+    }
+
+    /* --- Modal Styles --- */
+    #loginModal, #submissionsModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.35);
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    #loginModal > div, #submissionsModal > div {
+      background: #fff;
+      padding: 36px 32px 28px 32px;
+      border-radius: 14px;
+      min-width: 320px;
+      text-align: center;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+      position: relative;
+      max-width: 95vw;
+    }
+    #loginModal h3, #submissionsModal h3 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-size: 1.4rem;
+      color: #222;
+    }
+    #loginModal input {
+      width: 90%;
+      margin-bottom: 12px;
+      padding: 10px;
+      border: 1px solid #cfd8dc;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #f7fafc;
+    }
+    #loginModal button, #submissionsModal button {
+      padding: 10px 22px;
+      font-size: 1rem;
+      background-color: #0078d4;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-right: 8px;
+      transition: background 0.2s;
+    }
+    #loginModal button:hover, #submissionsModal button:hover {
+      background-color: #005fa3;
+    }
+    #loginError {
+      color: #d32f2f;
+      margin-top: 10px;
+      min-height: 22px;
+    }
+    #submissionsList {
+      overflow-y: auto;
+      max-height: 45vh;
+      min-width: 250px;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+    #submissionsList > div {
+      border-bottom: 1px solid #e3e8f0;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      font-size: 1rem;
+    }
+    @media (max-width: 700px) {
+      .header, body, .contact-section, .contact-box {
+        min-width: 0;
+        width: 100vw;
+        box-sizing: border-box;
+      }
+      .contact-box {
+        padding: 20px 10px;
+      }
+      .main-title {
+        font-size: 1.2rem;
+        margin: 0 10px;
+      }
+      .nav-menu {
+        min-width: 0;
+        gap: 6px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with logo, title, and navigation menu -->
+  <div class="header">
+    <div class="logo">
+      <img src="Assets/Logo.png" alt="Logo">
+    </div>
+    <div class="main-title">Contact</div>
+    <div class="nav-menu">
+      <!-- Navigation links and dropdowns -->
+      <a href="index.html">Home</a>
+      <span>|</span>
+      <div class="dropdown">
+        <a href="Introduction.html">Introduction ▼</a>
+        <div class="dropdown-content">
+          <a href="about.html">About Me</a>
+          <a href="goals.html">Goals</a>
+          <a href="skills.html">Skills</a>
+        </div>
+      </div>
+      <span>|</span>
+      <div class="dropdown">
+        <a href="Units.html">Units ▼</a>
+        <div class="dropdown-content">
+          <a href="OnlineWorld.html">Unit 1: Online World</a>
+          <a href="TechnologySystems.html">Unit 2: Technology Systems</a>
+          <a href="Spreadsheets.html">Unit 9: Spreadsheets</a>
+          <a href="SoftwareDevelopment.html">Unit 12: Software Development</a>
+          <a href="Database.html">Unit 10: Database</a>
+          <a href="DigitalPortfolio.html">Unit 3: Digital Portfolio</a>
+        </div>
+      </div>
+      <span>|</span>
+      <a href="Gallery.html">Gallery</a>
+      <span>|</span>
+      <a href="contact.html">Contact</a>
+      <span>|</span>
+      <!-- Settings dropdown with Login and View Submissions -->
+      <div class="dropdown">
+        <a href="javascript:void(0);">Settings ▼</a>
+        <div class="dropdown-content">
+          <button type="button" onclick="openLogin()" style="width:100%;text-align:left;background:none;border:none;padding:12px 20px;font-size:16px;cursor:pointer;">Login</button>
+          <button type="button" onclick="viewSubmissions()" style="width:100%;text-align:left;background:none;border:none;padding:12px 20px;font-size:16px;cursor:pointer;">View Submissions</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact section with info and form -->
+  <div class="contact-section">
+    <h2>Contact Me</h2>
+    <p>
+      Feel free to reach out to me with any questions or feedback!<br>
+      Phone: <b>[Phone number]</b> &nbsp;|&nbsp; Email: <a href="mailto:11133384@college.wlc.ac.uk">11133384@college.wlc.ac.uk</a>
+    </p>
+    <p>Or use the form below. Thank you for visiting my portfolio website!</p>
+    <div class="contact-box">
+      <!-- Contact form -->
+      <form class="contact-form" id="contactForm">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Login Modal for admin access -->
+  <div id="loginModal">
+    <div>
+      <h3>Admin Login</h3>
+      <input type="text" id="loginUser" placeholder="Username" autocomplete="username" />
+      <input type="password" id="loginPass" placeholder="Password" autocomplete="current-password" />
+      <div>
+        <button onclick="closeLogin()">Close</button>
+        <button onclick="doLogin()">Login</button>
+      </div>
+      <div id="loginError"></div>
+    </div>
+  </div>
+
+  <!-- Submissions Modal for viewing and clearing form submissions -->
+  <div id="submissionsModal">
+    <div>
+      <h3>Form Submissions</h3>
+      <div id="submissionsList"></div>
+      <button onclick="closeSubmissions()">Close</button>
+      <button onclick="clearSubmissions()" style="background:#d32f2f;margin-left:10px;">Clear All Submissions</button>
+    </div>
+  </div>
+
+  <button id="easterEggBtn" style="position:fixed;bottom:8px;right:8px;width:18px;height:18px;opacity:0.08;z-index:3000;background:none;border:none;cursor:pointer;">🐣</button>
+
+  <!-- Easter Egg Password Hint Modal -->
+  <div id="easterEggHintModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;z-index:4000;">
+    <div style="background:#fff;padding:32px 28px 24px 28px;border-radius:14px;min-width:260px;text-align:center;box-shadow:0 4px 32px rgba(0,0,0,0.13);position:relative;">
+      <h3 style="margin-top:0;">Easter Egg Password</h3>
+      <p style="font-size:1.1rem;">The password for the easter egg is:<br>
+        <b style="color:#0078d4;font-size:1.2rem;">P455w0rd</b>
+      </p>
+      <button onclick="document.getElementById('easterEggHintModal').style.display='none';" style="margin-top:12px;padding:8px 22px;font-size:1rem;background-color:#0078d4;color:#fff;border:none;border-radius:6px;cursor:pointer;">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Handle contact form submission and store data in localStorage
+    document.getElementById('contactForm').onsubmit = function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value,
+        date: new Date().toLocaleString()
+      };
+      let submissions = JSON.parse(localStorage.getItem('submissions') || '[]');
+      submissions.push(data);
+      localStorage.setItem('submissions', JSON.stringify(submissions));
+      alert('Thank you for your message!');
+      form.reset();
+    };
+
+    // Show the login modal
+    function openLogin() {
+      document.getElementById('loginModal').style.display = 'flex';
+      document.getElementById('loginError').textContent = '';
+    }
+    // Hide the login modal
+    function closeLogin() {
+      document.getElementById('loginModal').style.display = 'none';
+    }
+    // Handle admin login (username: admin, password: password)
+    function doLogin() {
+      const user = document.getElementById('loginUser').value;
+      const pass = document.getElementById('loginPass').value;
+      if (user === 'T.Vizoris' && pass === 'Portfolio123') {
+        localStorage.setItem('loggedInUser', user);
+        closeLogin();
+        alert('Logged in as admin!');
+      } else {
+        document.getElementById('loginError').textContent = 'Invalid credentials';
+      }
+    }
+    // Show submissions modal (admin only)
+    function viewSubmissions() {
+      // Check if logged in as admin
+      const loggedInUser = localStorage.getItem('loggedInUser');
+      if (loggedInUser === 'T.Vizoris') {
+        showSubmissionsModal();
+      } else {
+        openLogin();
+      }
+    }
+
+    // Show submissions modal with password prompt (easter egg, no admin needed)
+    function viewSubmissionsEasterEgg() {
+      const password = prompt("Enter the submissions password:");
+      if (password === "P455w0rd") {
+        showSubmissionsModal();
+      } else if (password !== null) {
+        alert('Incorrect password.');
+      }
+    }
+
+    // Show the submissions modal with data
+    function showSubmissionsModal() {
+      const submissions = JSON.parse(localStorage.getItem('submissions') || '[]');
+      let html = '';
+      if (submissions.length === 0) {
+        html = '<p>No submissions yet.</p>';
+      } else {
+        submissions.forEach((s, i) => {
+          html += `<div>
+            <strong>#${i+1}</strong><br>
+            <b>Name:</b> ${s.name}<br>
+            <b>Email:</b> ${s.email}<br>
+            <b>Message:</b> ${s.message}<br>
+            <b>Date:</b> ${s.date}
+          </div>`;
+        });
+      }
+      document.getElementById('submissionsList').innerHTML = html;
+      document.getElementById('submissionsModal').style.display = 'flex';
+    }
+
+    // Hide the submissions modal
+    function closeSubmissions() {
+      document.getElementById('submissionsModal').style.display = 'none';
+    }
+    // Clear all submissions from localStorage and update the modal (now password protected)
+    function clearSubmissions() {
+      const password = prompt('Enter the admin password to clear all submissions:');
+      if (password === 'Portfolio123') {
+        if (confirm('Are you sure you want to delete all submissions?')) {
+          localStorage.removeItem('submissions');
+          document.getElementById('submissionsList').innerHTML = '<p>No submissions yet.</p>';
+        }
+      } else if (password !== null) {
+        alert('Incorrect password. Submissions were not cleared.');
+      }
+    }
+
+    // Easter egg button triggers the password prompt for submissions (no admin needed)
+    document.getElementById('easterEggBtn').onclick = function() {
+      viewSubmissionsEasterEgg();
+    };
+
+    // When the logo is clicked, show the easter egg password modal
+    document.querySelector('.logo img').addEventListener('click', function() {
+      document.getElementById('easterEggHintModal').style.display = 'flex';
+    });
+  </script>
+</body>
+</html>
